@@ -1,0 +1,267 @@
+body{
+  margin: auto;
+  font-family: 'Ubuntu', sans-serif;
+  color: hsl(213, 96%, 18%);
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 9.6%;
+}
+
+.left{
+  width: 20%;
+  height: 34.5rem;
+  background-image: url(../public/bg-sidebar-desktop.png);
+  background-repeat: no-repeat;
+  color: white;
+  padding-top: 1rem;
+}
+.left-steps{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.number{
+  font-size: 1.5rem;
+  border-radius: 50%;
+  padding: 0 7px;
+  margin: 0 1rem;
+  border: 1px solid white;
+}
+.number-bg{
+  background-color: hsl(228, 100%, 84%);
+  color: black;
+  
+}
+
+.step{
+  font-size: 13px ;
+  color: rgb(158, 158, 158);
+}
+
+.left-description{
+  font-weight: 500;
+}
+.right{
+  width: 25%;
+}
+
+.title-div{
+  margin-bottom: 2.5rem;
+ 
+}
+.title{
+  margin: 0 0 0.5rem 0;
+  color: hsl(213, 96%, 18%);
+}
+
+
+.instrucions{
+  color: rgb(158, 158, 158);
+}
+
+.input{
+  all: unset;
+  height: 3rem;
+  width: 97%;
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 5px;
+  padding-left: 10px;
+  margin-top: -10px;
+  font-weight: 500;
+}
+
+.btns-div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5.5rem;
+  position: relative;
+  top: 2.25rem;
+}
+
+.righ1-btns-div{
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  margin-top: 5.5rem;
+  position: relative;
+  top: 2.25rem;
+}
+
+.submit-btn1{
+  all: unset;
+  font-weight: bold;
+
+}
+
+.submit-btn2{
+  all: unset;
+  padding: 1rem 1.5rem;
+  background-color: hsl(213, 100%, 24%);
+  color: white;
+  border-radius: 8px;
+}
+
+.left-submit{
+  text-align: left;
+}
+
+.error{
+  color: red;
+  margin-left: 39%;
+}
+.tel-error{
+  color: red;
+  margin-left: 33%;
+}
+
+.color{
+  border-color: red;
+}
+
+.subscritption{
+  
+  display: flex;
+  gap: 1rem;
+}
+
+.bottom{
+  margin-bottom: -22.5px;
+}
+
+.sub-text{
+  margin-top:3rem ;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+.prices{
+  color: hsl(231, 11%, 63%);
+}
+
+.monFree{
+  font-weight: 400;
+}
+
+.sub-div{
+  width: 8.5rem;
+  padding: 1rem;
+}
+.sub-text-div{
+  line-height: 1.4;
+}
+
+.sub-div:hover{
+  border: 1px solid hsl(213, 100%, 24%);
+  margin: -1px;
+  border-radius: 10px;
+}
+
+.selected{
+  border: 1px solid hsl(213, 100%, 24%);
+  border-radius: 10px;
+  width: 8.5rem;
+  padding: 1rem;
+  margin: -1px;
+  background-color: hsl(231, 100%, 99%);
+  
+}
+
+.sub-time{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  background-color: hsl(231, 100%, 99%);
+  height: 4rem;
+  border-radius: 9px;
+}
+.moveDown{
+  position: relative;
+  top: 22.5px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsl(213, 96%, 18%);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.chosen{
+  transition: color .4s;
+  color: hsl(213, 96%, 18%);
+  font-weight: bold;
+}
+
+.not-chosen{
+  transition: color .4s;
+  color: hsl(231, 11%, 63%);
+  font-weight: bold;
+}
+
+.right2-btns-div{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5.5rem;
+  position: relative;
+  top: 1.1rem;
+}

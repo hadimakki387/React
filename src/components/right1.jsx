@@ -1,11 +1,12 @@
 import React from "react";
 
-function first(props) {
-
+function Right1(props) {
   return (
     <div className="right">
-      <div className="title-div">
-        <h1 className="title" id="title">Personal</h1>
+      <div className="title-div title-Right1-div">
+        <h1 className="title " id="title">
+          Personal
+        </h1>
         <span className="instrucions">
           Please provide your name, email address, phone number
         </span>
@@ -18,7 +19,7 @@ function first(props) {
           placeholder="John"
           className="input"
           autoComplete="off"
-          value={props.formData.Name}
+          
           required
         ></input>
 
@@ -35,7 +36,7 @@ function first(props) {
           onInput={props.handleEmailInput}
           placeholder="example@email.com"
           className={props.emailError ? "input color" : "input"}
-          value={props.formData.email}
+          
           required
         ></input>
 
@@ -53,21 +54,20 @@ function first(props) {
           ref={props.telRef}
           onInput={props.handleTelInput}
           autoComplete="off"
-          value={props.formData.phone}
+          
           required
         ></input>
 
         <div className="righ1-btns-div">
-        
-        <div className="submit2">
-          <button type="submit" className="submit-btn2">
-            Next Step
-          </button>
-        </div>
+          <div className="next-div">
+            <button type="submit" className="next-btn">
+              Next Step
+            </button>
+          </div>
         </div>
       </form>
     </div>
   );
 }
 
-export default first;
+export default Right1;

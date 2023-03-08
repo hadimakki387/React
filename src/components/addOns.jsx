@@ -32,8 +32,8 @@ function AddOns(props){
             </div>
 
             <div className="inner2">
-            <span>{props.name}</span><br/>
-            <span>{props.description}</span>
+            <span className="addOns-title">{props.name}</span><br/>
+            <span className="addOns-desc">{props.description}</span>
             </div>
             
           </div>

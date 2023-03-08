@@ -2,34 +2,38 @@ import React, { useState, useRef } from "react";
 import Right1 from "./right1";
 import Right2 from "./Right2";
 import Right3 from "./Right3";
+import Right4 from "./Right4";
+import ThankYou from "./ThankYou";
 
 function Info() {
   // This section is to collect Form Data and increase the page number (count)
   const [formData, setFormData] = useState({});
   const [count, setCount] = useState(0);
-
+  
   const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const {
-      target: { elements },
-    } = event;
-    const data = {};
-
-    Array.from(elements).forEach((element) => {
-      if (element.tagName === "INPUT") {
-        data[element.name] = element.value;
+      event.preventDefault();
+      
+      const { target: { elements } } = event;
+      const data = {};
+  
+      Array.from(elements).forEach((element) => {
+          if (element.tagName === "INPUT") {
+              data[element.name] = element.value;
+          }
+      });
+  
+      setFormData(data);
+  
+      if (count < 3) {
+          setCount(count + 1);
+      } else {
+          setCount(count + 1);
+          setTimeout(() => {
+              setCount(0)
+          }, 3000)
       }
-    });
-
-    setFormData(data);
-    if (count < 3) {
-      setCount(count + 1);
-    } else {
-      setCount(0);
-    }
   };
-
+  
   // This section is to add specific validation to the email input
   const emailRef = useRef(null);
   const [emailError, setEmailError] = useState(null);
@@ -87,17 +91,21 @@ function Info() {
     setSelectedPlan(value);
   }
 
+  if(selectedPlan){
+    var plan =selectedPlan
+  }
+  
+
   // This function is to recieve te selected addOns from Right3
   const [selectedAddOns,setSelectedAddOns]=useState()
   function handleAddOns(value){
     setSelectedAddOns(value)
-    
+    setCount(count + 1)
     
   }
   
-  if(selectedAddOns){
-    var addons =Object.entries(selectedAddOns)
-  }
+  
+  
   
 
   // just a reminder for the 4th page
@@ -111,6 +119,10 @@ function Info() {
   
   // }
   
+  // This function handles the Change Button at the Right4 page
+  function handleChangeButton(value){
+    setCount(0)
+  }
   
   
   // This const Store All the enters Data
@@ -118,28 +130,30 @@ function Info() {
     name: formData.Name,
     email: formData.email,
     phoneNumber: formData.phone,
-    Plan: selectedPlan,
-    subType: subType === false ? "monthly" : "Yearly",
-    addons:addons
+    PlanName: plan?plan.name:null,
+    planPrice:plan?plan.price:null,
+    subType: subType === false ? "monthly" : !subType?null:subType===true?"yearly":null,
+    addons:selectedAddOns
   };
   console.log(data)
   
 
   return (
     <div className="App">
-      <div className="left" >
+      <div className="left left-Mobile" >
         <div className="left-steps">
+        
           <p className={count === 0 ? "number number-bg" : "number "}>1</p>
           <p>
             <span className="step ">Step 1</span>
             <br></br>
-            <span className="left-description">YOU INFO</span>
+            <span className="left-description">YOUR INFO</span>
           </p>
         </div>
         <div className="left-steps">
           <p className={count === 1 ? "number number-bg" : "number"}>2</p>
           <p>
-            <span className="step">Step 1</span>
+            <span className="step">Step 2</span>
             <br></br>
             <span className="left-description">SELECT PLAN</span>
           </p>
@@ -147,15 +161,15 @@ function Info() {
         <div className="left-steps">
           <p className={count === 2 ? "number number-bg" : "number"}>3</p>
           <p>
-            <span className="step">Step 1</span>
+            <span className="step">Step 3</span>
             <br></br>
             <span className="left-description">ADD-ONS</span>
           </p>
         </div>
         <div className="left-steps">
-          <p className={count === 3 ? "number number-bg" : "number"}>4</p>
+          <p className={count >= 3 ? "number number-bg" : "number"}>4</p>
           <p>
-            <span className="step">Step 1</span>
+            <span className="step">Step 4</span>
             <br></br>
             <span className="left-description">SUMMARY</span>
           </p>
@@ -187,7 +201,7 @@ function Info() {
           formData={formData}
           handleCheckbox={(value) => handleCheckbox(value)}
           handleSelectedPlan={(value) => handleSelectedPlan(value)}
-          
+          data={data}
         />
       ) : count === 2 ? (
         <Right3
@@ -202,8 +216,27 @@ function Info() {
           formData={formData}
           subType={subType}
           handleAddOns={(value) => handleAddOns(value)}
+          data={data}
         />
-      ) : null}
+      ) : count === 3 ? (
+        <Right4
+          handleSubmit={handleSubmit}
+          emailError={emailError}
+          emailRef={emailRef}
+          handleEmailInput={handleEmailInput}
+          telError={telError}
+          telRef={telRef}
+          handleTelInput={handleTelInput}
+          goBack={goBack}
+          formData={formData}
+          subType={subType}
+          handleAddOns={(value) => handleAddOns(value)}
+          data={data}
+          handleChangeButton={(value)=>handleChangeButton(value)}
+        />
+      ) : count === 4 ?<ThankYou
+        handleSubmit={handleSubmit}
+      />:null}
     </div>
   );
 }

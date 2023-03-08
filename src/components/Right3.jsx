@@ -3,39 +3,38 @@ import AddOns from "./addOns";
 
 function Right3(props) {
 
-  const [selectedAddOns, setSelectedAddOns] = useState({});
+  const [selectedAddOns, setSelectedAddOns] = useState([]);
 
   // This function handles the addOns from the addOns page and push them to the selectedAddOns
   function handleAddOnAdd(add) {
-    setSelectedAddOns((prev,index) => ({
+    setSelectedAddOns((prev,index) => ([
       ...prev,
-      [add.name]: {
+      {
         name: add.name,
         moprice: add.moprice,
         yrprice: add.yrprice
       }
       
-    }));
+    ]));
   }
 
   // This function Remove the add from the object whnever the user reclicked the addOn
   function handleAddOnRemove(add) {
-    setSelectedAddOns((prev) => {
-      const newSelected = { ...prev };
-      delete newSelected[add.name];
-      return newSelected;
-    });
-  }
+  setSelectedAddOns((prev) => {
+    return prev.filter((selected) => selected.name !== add.name);
+  });
+}
 
   
   // This function pass the data from the Right3.jsx to Info.jsx
-  function handleSubmit(){
+  function handleSubmit(event){
+    event.preventDefault()
     props.handleAddOns(selectedAddOns)
   }
 
   
   return (
-    <div className="right">
+    <div className="right Right3-Mobile">
       <div className="title-div">
         <h1 className="title" id="title">
           Pick add-ons

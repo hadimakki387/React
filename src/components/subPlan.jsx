@@ -5,14 +5,16 @@ function SubscriptionPlan(props) {
 
   // This function Sends the name of the Subscription plan name to the Right 3 File
   function handlePlanSelection() {
-    setSelectedPlan(props.name);
+    setSelectedPlan({name:props.name,price:props.price});
+    props.onClick();
   }
+ 
  
 
   return (
     <div
       // in the className we are checking if the selected plan is the same as the prop.name which is sent from the Right2 file 
-      className={`sub-div ${selectedPlan === props.name ? "selected" : ""}`}
+      className={`sub-div ${selectedPlan.name === props.name && selectedPlan.price === props.price ? "selected" : ""}`}
       onClick={handlePlanSelection}
     >
       <h1>

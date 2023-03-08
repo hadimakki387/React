@@ -4,28 +4,30 @@ import SubscriptionPlan from "./subPlan";
 function Right2(props) {
   const [selectedPlan, setSelectedPlan] = useState("");
   const [subType, setSubType] = useState(false);
-
+  const [choosed, setChoosed] = useState(false);
   
   // This function send the data back to the Info File
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.handleCheckbox(subType);
-    props.handleSelectedPlan(selectedPlan)
+    if (choosed) {
+      props.handleCheckbox(subType);
+      props.handleSelectedPlan(selectedPlan);
+    }
   };
 
   // This function checks if the yearly subscription is true or false
-  function Checked(event) {
-    setSubType(event.target.checked)    
+  function handleSubscriptionType(event) {
+    setSubType(event.target.checked);
   }
 
-  // This funcion recieves the plan name that is clicked and set the selectedPlan equals to it
-  function handlePlanSelection(planName) {
-    setSelectedPlan(planName);
+  // This function receives the plan name that is clicked and sets the selectedPlan equals to it
+  function handlePlanSelection(plan) {
+    setSelectedPlan(plan);
+    setChoosed(true);
   }
-  
 
   return (
-    <div className="right">
+    <div className="right right2Mobile">
       <div className="title-div">
         <h1 className="title" id="title">
           Select Your Plan
@@ -34,7 +36,7 @@ function Right2(props) {
           You have the option of monthly and yearly billing.
         </span>
       </div>
-      <form action="/" method="POST" onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <div
           className={
             subType === false ? "subscritption" : "subscritption bottom"
@@ -46,8 +48,9 @@ function Right2(props) {
             img="icon-arcade.png"
             selectedPlan={selectedPlan}
             setSelectedPlan={setSelectedPlan}
-            onClick={() => handlePlanSelection("Arcade")}
+            onClick={() => handlePlanSelection({ name: "Arcade", price: subType === false ? 9 : 90 })}
             subType={subType}
+            plan={props.data}
           />
 
           <SubscriptionPlan
@@ -56,7 +59,7 @@ function Right2(props) {
             img="icon-advanced.png"
             selectedPlan={selectedPlan}
             setSelectedPlan={setSelectedPlan}
-            onClick={() => handlePlanSelection("Advanced")}
+            onClick={() => handlePlanSelection({ name: "Advanced", price: subType === false ? 12 : 120 })}
             subType={subType}
           />
           <SubscriptionPlan
@@ -65,7 +68,7 @@ function Right2(props) {
             img="icon-pro.png"
             selectedPlan={selectedPlan}
             setSelectedPlan={setSelectedPlan}
-            onClick={() => handlePlanSelection("Pro")}
+            onClick={() => handlePlanSelection({ name: "Pro", price: subType === false ? 15 : 150 })}
             subType={subType}
           />
         </div>
@@ -74,7 +77,7 @@ function Right2(props) {
             Monthly
           </span>
           <label className="switch">
-            <input type="checkbox" onChange={Checked}  ></input>
+            <input type="checkbox" onChange={handleSubscriptionType}></input>
             <span className="slider round"></span>
           </label>
           <span className={subType === true ? "chosen" : "not-chosen"}>
@@ -83,16 +86,12 @@ function Right2(props) {
         </div>
         <div className="right2-btns-div">
           <div className="back-div">
-            <button
-              type="button"
-              className="back-btn"
-              onClick={props.goBack}
-            >
+            <button type="button" className="back-btn" onClick={props.goBack}>
               Go Back
             </button>
           </div>
           <div className="next-div">
-            <button type="submit" className="next-btn">
+            <button type="submit" className={choosed===true ? "next-btn" : "next-btn-blocked" + (choosed===true ? "" : " disabled")}>
               Next Step
             </button>
           </div>

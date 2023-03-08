@@ -16,7 +16,7 @@ function Right1(props) {
         <input
           type="text"
           name="Name"
-          placeholder="John"
+          placeholder="e.g. Stephen King"
           className="input"
           autoComplete="off"
           
@@ -34,7 +34,7 @@ function Right1(props) {
           name="email"
           ref={props.emailRef}
           onInput={props.handleEmailInput}
-          placeholder="example@email.com"
+          placeholder="e.g. stephenking@lorem.com"
           className={props.emailError ? "input color" : "input"}
           
           required
@@ -50,7 +50,7 @@ function Right1(props) {
           type="tel"
           name="phone"
           className={props.telError ? "input color" : "input"}
-          placeholder="+1 234 567 789"
+          placeholder="e.g. +1 234 567 789"
           ref={props.telRef}
           onInput={props.handleTelInput}
           autoComplete="off"
